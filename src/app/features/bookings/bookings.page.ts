@@ -1,0 +1,2 @@
+import { Component, inject } from '@angular/core';import { ActivatedRoute, RouterLink } from '@angular/router';import { GameDataService } from '../../core/game-data.service';
+@Component({standalone:true,imports:[RouterLink],templateUrl:'./bookings.page.html',styleUrl:'./bookings.page.scss'}) export class BookingsPage{data=inject(GameDataService);success=inject(ActivatedRoute).snapshot.queryParamMap.get('success')==='1'}

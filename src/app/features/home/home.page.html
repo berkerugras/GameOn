@@ -1,0 +1,28 @@
+<section class="page">
+ <p class="eyebrow">14 Eylül, Pazartesi</p><h1>Bugün nasıl<br>hareket ediyoruz?</h1>
+ <div class="sport-scroll">
+  @for (sport of sportOptions; track sport.key) {
+   <button type="button" [class.active]="selectedSport() === sport.key" (click)="selectedSport.set(sport.key)">{{sport.label}}</button>
+  }
+ </div>
+ <div class="quick-grid">
+  <a class="quick lime" routerLink="/explore"><span>⚽</span><b>Maç bul</b><small>Yakındaki açık maçlar</small></a>
+  <a class="quick dark" routerLink="/coaches"><span>🏋️</span><b>PT bul</b><small>Uzmanla hedefe ulaş</small></a>
+ </div>
+ <div class="section-title"><h2>Sana yakın maçlar</h2><button routerLink="/matches">Tümünü gör</button></div>
+ @for (match of visibleMatches(); track match.id) {
+  <article class="match-card card">
+   <div class="match-top"><span class="pill live">● {{match.spots ?? 2}} kişi eksik</span><strong>{{match.date}} · {{match.time}}</strong></div>
+   <div class="versus">
+    <a routerLink="/teams/1"><i style="--team:#c7f43d">KU</i><b>{{match.home.split(' ')[0]}}<br>{{match.home.split(' ').slice(1).join(' ') || 'Takım'}}</b></a>
+    <span>VS</span>
+    <a><i class="unknown">?</i><b>{{match.away}}</b></a>
+   </div>
+   <div class="venue">⌖ {{match.venue}} <span>{{match.format}}</span></div>
+   <button class="primary full">Maça katıl</button>
+  </article>
+ }
+ <div class="section-title"><h2>Öne çıkan antrenörler</h2><button routerLink="/coaches">Tüm PT'ler</button></div>
+ <div class="coach-row">@for(coach of data.coaches().slice(0,2);track coach.id){<a class="coach card" [routerLink]="['/coaches',coach.id]"><div class="coach-face" [style.background]="coach.color">{{coach.initials}}</div><div><span class="verified">✓ Doğrulandı</span><h2>{{coach.name}}</h2><p>{{coach.title}}</p><small>★ {{coach.rating}} · {{coach.gym}}</small></div><b>{{coach.price}}₺<small>/seans</small></b></a>}</div>
+ <div class="section-title"><h2>Önerilen rakip</h2></div><article class="team-card card" routerLink="/teams/2"><i class="crest">MF</i><div><h2>Moda FC</h2><p>⚽ Orta seviye · 2,8 km</p><span>★ 4.7 &nbsp; 🛡 96</span></div><b class="match">92%<small>uyum</small></b></article>
+</section>

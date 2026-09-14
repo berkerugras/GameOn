@@ -1,0 +1,17 @@
+<ion-app>
+  <div class="phone-shell">
+    <header class="brand-bar">
+      <a routerLink="/home" class="brand"><span class="brand-mark">G</span>GAME<span>ON</span></a>
+      <div class="location"><span></span> İstanbul <small>⌄</small></div>
+      <button class="avatar-mini" routerLink="/profile" aria-label="Profile">BU</button>
+    </header>
+    <main><ion-router-outlet /></main>
+    <nav class="tab-bar" aria-label="Main navigation">
+      <a routerLink="/home" routerLinkActive="active"><ion-icon name="home-outline"/><small>Ana Sayfa</small></a>
+      <a routerLink="/explore" routerLinkActive="active"><ion-icon name="compass-outline"/><small>Keşfet</small></a>
+      <a routerLink="/create" routerLinkActive="active" class="create-tab"><span><ion-icon name="add"/></span><small>Oluştur</small></a>
+      <a routerLink="/bookings" routerLinkActive="active"><ion-icon name="calendar-outline"/><small>Planlarım</small></a>
+      <a routerLink="/profile" routerLinkActive="active"><ion-icon name="person-outline"/><small>Profil</small></a>
+    </nav>
+  </div>
+</ion-app>

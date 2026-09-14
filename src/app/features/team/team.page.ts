@@ -1,0 +1,2 @@
+import { Component, computed, inject, signal } from '@angular/core';import { ActivatedRoute } from '@angular/router';import { GameDataService } from '../../core/game-data.service';
+@Component({standalone:true,templateUrl:'./team.page.html',styleUrl:'./team.page.scss'}) export class TeamPage{private route=inject(ActivatedRoute);private data=inject(GameDataService);sent=signal(false);team=computed(()=>this.data.teams().find(t=>t.id===Number(this.route.snapshot.paramMap.get('id')))??this.data.teams()[0])}
