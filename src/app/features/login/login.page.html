@@ -1,0 +1,42 @@
+<section class="auth-page">
+  <a routerLink="/home" class="brand"><span>G</span>GAME<b>ON</b></a>
+
+  <div class="auth-card">
+    <p class="eyebrow">Tekrar sahaya dön</p>
+    <h1>Hesabına giriş yap</h1>
+    <p class="lead">Maçlarını, takımlarını ve rezervasyonlarını kaldığın yerden yönet.</p>
+
+    <form (ngSubmit)="signIn()">
+      <label>
+        <span>E-posta</span>
+        <div class="field">
+          <ion-icon name="mail-outline" aria-hidden="true" />
+          <input type="email" name="email" [(ngModel)]="email" placeholder="burak@example.com" autocomplete="email" required>
+        </div>
+      </label>
+
+      <label>
+        <span>Şifre</span>
+        <div class="field">
+          <ion-icon name="lock-closed-outline" aria-hidden="true" />
+          <input type="password" name="password" [(ngModel)]="password" placeholder="********" autocomplete="current-password" required>
+        </div>
+      </label>
+
+      <div class="form-row">
+        <label class="check">
+          <input type="checkbox" name="rememberMe" [(ngModel)]="rememberMe">
+          <span>Beni hatırla</span>
+        </label>
+        <a href="#">Şifremi unuttum</a>
+      </div>
+
+      <button class="primary auth-submit" type="submit">
+        Giriş yap
+        <ion-icon name="arrow-forward" aria-hidden="true" />
+      </button>
+    </form>
+  </div>
+
+  <p class="switch">Hesabın yok mu? <a routerLink="/register">Kayıt ol</a></p>
+</section>

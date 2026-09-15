@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { IonApp, IonIcon, IonRouterOutlet } from '@ionic/angular';
 import { addIcons } from 'ionicons';
-import { add, calendarOutline, compassOutline, homeOutline, personOutline } from 'ionicons/icons';
+import { add, arrowForward, calendarOutline, compassOutline, homeOutline, lockClosedOutline, mailOutline, personAddOutline, personOutline, trophyOutline } from 'ionicons/icons';
 
 @Component({
   imports: [IonApp, IonIcon, IonRouterOutlet, RouterLink, RouterLinkActive],
@@ -11,5 +11,11 @@ import { add, calendarOutline, compassOutline, homeOutline, personOutline } from
   templateUrl: './app.html',
 })
 export class App {
-  constructor() { addIcons({ homeOutline, compassOutline, add, calendarOutline, personOutline }); }
+  constructor(readonly router: Router) {
+    addIcons({ homeOutline, compassOutline, add, calendarOutline, personOutline, mailOutline, lockClosedOutline, personAddOutline, arrowForward, trophyOutline });
+  }
+
+  get isAuthPage() {
+    return this.router.url.startsWith('/login') || this.router.url.startsWith('/register');
+  }
 }

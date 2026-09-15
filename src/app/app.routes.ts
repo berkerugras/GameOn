@@ -1,6 +1,8 @@
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
+  { path: 'login', loadComponent: () => import('./features/login/login.page').then(m => m.LoginPage) },
+  { path: 'register', loadComponent: () => import('./features/register/register.page').then(m => m.RegisterPage) },
   { path: 'home', loadComponent: () => import('./features/home/home.page').then(m => m.HomePage) },
   { path: 'explore', loadComponent: () => import('./features/explore/explore.page').then(m => m.ExplorePage) },
   { path: 'create', loadComponent: () => import('./features/create/create.page').then(m => m.CreatePage) },

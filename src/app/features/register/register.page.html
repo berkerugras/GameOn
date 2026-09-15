@@ -1,0 +1,61 @@
+<section class="auth-page">
+  <a routerLink="/home" class="brand"><span>G</span>GAME<b>ON</b></a>
+
+  <div class="auth-card">
+    <p class="eyebrow">Yeni profil</p>
+    <h1>GameOn'a katıl</h1>
+    <p class="lead">Takımını kur, maç bul ve spor topluluğuna tek profille dahil ol.</p>
+
+    <form (ngSubmit)="createAccount()">
+      <label>
+        <span>Ad soyad</span>
+        <div class="field">
+          <ion-icon name="person-add-outline" aria-hidden="true" />
+          <input type="text" name="fullName" [(ngModel)]="fullName" placeholder="Burak U." autocomplete="name" required>
+        </div>
+      </label>
+
+      <label>
+        <span>E-posta</span>
+        <div class="field">
+          <ion-icon name="mail-outline" aria-hidden="true" />
+          <input type="email" name="email" [(ngModel)]="email" placeholder="burak@example.com" autocomplete="email" required>
+        </div>
+      </label>
+
+      <label>
+        <span>Şifre</span>
+        <div class="field">
+          <ion-icon name="lock-closed-outline" aria-hidden="true" />
+          <input type="password" name="password" [(ngModel)]="password" placeholder="En az 8 karakter" autocomplete="new-password" minlength="8" required>
+        </div>
+      </label>
+
+      <label>
+        <span>Favori rol</span>
+        <div class="field select-field">
+          <ion-icon name="trophy-outline" aria-hidden="true" />
+          <select name="position" [(ngModel)]="position">
+            <option>Kaleci</option>
+            <option>Defans</option>
+            <option>Orta saha</option>
+            <option>Forvet</option>
+            <option>Esnek</option>
+          </select>
+        </div>
+      </label>
+
+      <label class="check">
+        <input type="checkbox" name="acceptedTerms" [(ngModel)]="acceptedTerms" required>
+        <span>Kullanım koşullarını kabul ediyorum</span>
+      </label>
+
+      <button class="primary auth-submit" type="submit">
+        Kayıt ol
+        <ion-icon name="arrow-forward" aria-hidden="true" />
+      </button>
+    </form>
+  </div>
+
+  <p class="switch">Zaten hesabın var mı? <a routerLink="/login">Giriş yap</a></p>
+</section>
