@@ -17,6 +17,6 @@ export const routes: Routes = [
   { path: 'booking/:id', loadComponent: () => import('./features/booking/booking.page').then(m => m.BookingPage) },
   { path: 'bookings', loadComponent: () => import('./features/bookings/bookings.page').then(m => m.BookingsPage) },
   { path: 'teams/:id', loadComponent: () => import('./features/team/team.page').then(m => m.TeamPage) },
-  { path: '', pathMatch: 'full', redirectTo: 'home' },
+  { path: '', pathMatch: 'full', redirectTo: 'register' },
   { path: '**', redirectTo: 'home' }
 ];
