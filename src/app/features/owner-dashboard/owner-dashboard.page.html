@@ -1,0 +1,45 @@
+<section class="owner-page">
+  <header class="owner-top">
+    <a routerLink="/home" class="brand"><span>G</span>GAME<b>ON</b></a>
+    <a routerLink="/saha-sahibi-giris">Çıkış</a>
+  </header>
+
+  <p class="eyebrow">Halı saha paneli</p>
+  <h1>{{facility().name}}</h1>
+
+  <div class="metrics">
+    <article class="metric"><ion-icon name="cash-outline" /><span>Bugünkü ciro</span><b>{{todayRevenue()}}₺</b></article>
+    <article class="metric"><ion-icon name="calendar-outline" /><span>Bugün</span><b>{{todayReservations().length}} rezervasyon</b></article>
+    <article class="metric"><ion-icon name="time-outline" /><span>Doluluk</span><b>%{{facility().occupancy}}</b></article>
+  </div>
+
+  <div class="section-title"><h2>Yeni rezervasyon</h2></div>
+  <form class="reservation-form card" (ngSubmit)="addReservation()">
+    <label>Müşteri / takım<input name="customer" [(ngModel)]="customer" placeholder="Takım adı" required></label>
+    <label>Telefon<input name="phone" [(ngModel)]="phone" placeholder="+90 5.." required></label>
+    <div class="row">
+      <label>Saha<select name="field" [(ngModel)]="field"><option>Saha 1</option><option>Saha 2</option><option>Saha 3</option></select></label>
+      <label>Gün<select name="date" [(ngModel)]="date"><option>Bugün</option><option>Yarın</option><option>Hafta sonu</option></select></label>
+    </div>
+    <div class="row">
+      <label>Saat<select name="time" [(ngModel)]="time">@for(slot of slots; track slot){<option>{{slot}}</option>}</select></label>
+      <label>Süre<input type="number" name="duration" min="1" max="4" [(ngModel)]="duration"></label>
+    </div>
+    <button class="primary submit" type="submit">Rezervasyon ekle · {{reservationPrice}}₺</button>
+  </form>
+
+  <div class="section-title"><h2>Rezervasyon takvimi</h2><button>Bu hafta</button></div>
+  <div class="timeline">
+    @for(reservation of reservations(); track reservation.id) {
+      <article class="booking card">
+        <div class="time"><b>{{reservation.time}}</b><span>{{reservation.date}}</span></div>
+        <div>
+          <span class="pill" [class.live]="reservation.status === 'confirmed'">{{reservation.status === 'pending' ? 'Ödeme bekliyor' : 'Onaylandı'}}</span>
+          <h2>{{reservation.customer}}</h2>
+          <p>{{reservation.field}} · {{reservation.duration}} saat · {{reservation.price}}₺</p>
+          <small>{{reservation.phone}}</small>
+        </div>
+      </article>
+    }
+  </div>
+</section>

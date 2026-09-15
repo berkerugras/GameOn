@@ -1,0 +1,52 @@
+<section class="owner-auth">
+  <a routerLink="/home" class="brand"><span>G</span>GAME<b>ON</b></a>
+
+  <div class="hero-strip">
+    <ion-icon name="football-outline" aria-hidden="true" />
+    <div>
+      <p class="eyebrow">Tesisini ekle</p>
+      <h1>Halı saha sahibi kaydı</h1>
+    </div>
+  </div>
+
+  <form class="auth-card" (ngSubmit)="createOwnerAccount()">
+    <label>
+      <span>Yetkili kişi</span>
+      <div class="field"><ion-icon name="person-outline" aria-hidden="true" /><input name="ownerName" [(ngModel)]="ownerName" placeholder="Ad soyad" autocomplete="name" required></div>
+    </label>
+
+    <label>
+      <span>Tesis adı</span>
+      <div class="field"><ion-icon name="business-outline" aria-hidden="true" /><input name="facilityName" [(ngModel)]="facilityName" placeholder="Caddebostan Arena" required></div>
+    </label>
+
+    <div class="two-col">
+      <label>
+        <span>E-posta</span>
+        <div class="field compact"><input type="email" name="email" [(ngModel)]="email" placeholder="mail@example.com" required></div>
+      </label>
+      <label>
+        <span>Telefon</span>
+        <div class="field compact"><input name="phone" [(ngModel)]="phone" placeholder="+90 5.." required></div>
+      </label>
+    </div>
+
+    <div class="two-col">
+      <label>
+        <span>Saha sayısı</span>
+        <div class="field compact"><input type="number" min="1" max="12" name="fields" [(ngModel)]="fields" required></div>
+      </label>
+      <label>
+        <span>Şifre</span>
+        <div class="field compact"><input type="password" name="password" [(ngModel)]="password" placeholder="********" minlength="8" required></div>
+      </label>
+    </div>
+
+    <button class="primary auth-submit" type="submit">
+      Tesis hesabı aç
+      <ion-icon name="arrow-forward" aria-hidden="true" />
+    </button>
+  </form>
+
+  <p class="switch">Zaten tesis hesabın var mı? <a routerLink="/saha-sahibi-giris">Giriş yap</a></p>
+</section>

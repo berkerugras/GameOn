@@ -1,0 +1,37 @@
+<section class="owner-auth">
+  <a routerLink="/home" class="brand"><span>G</span>GAME<b>ON</b></a>
+
+  <div class="hero-strip">
+    <ion-icon name="business-outline" aria-hidden="true" />
+    <div>
+      <p class="eyebrow">Tesis yönetimi</p>
+      <h1>Halı saha sahibi girişi</h1>
+    </div>
+  </div>
+
+  <form class="auth-card" (ngSubmit)="signIn()">
+    <label>
+      <span>İş e-postası</span>
+      <div class="field">
+        <ion-icon name="mail-outline" aria-hidden="true" />
+        <input type="email" name="email" [(ngModel)]="email" placeholder="tesis@example.com" autocomplete="email" required>
+      </div>
+    </label>
+
+    <label>
+      <span>Şifre</span>
+      <div class="field">
+        <ion-icon name="lock-closed-outline" aria-hidden="true" />
+        <input type="password" name="password" [(ngModel)]="password" placeholder="********" autocomplete="current-password" required>
+      </div>
+    </label>
+
+    <button class="primary auth-submit" type="submit">
+      Panele gir
+      <ion-icon name="arrow-forward" aria-hidden="true" />
+    </button>
+  </form>
+
+  <p class="switch">Tesis hesabın yok mu? <a routerLink="/saha-sahibi-kayit">Saha sahibi kaydı</a></p>
+  <p class="switch muted">Oyuncu hesabı için <a routerLink="/login">oyuncu girişi</a></p>
+</section>

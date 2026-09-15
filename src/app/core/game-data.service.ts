@@ -3,6 +3,8 @@ export interface Team{id:number;name:string;initials:string;sport:'football'|'ba
 export interface Match{id:number;home:string;away:string;date:string;time:string;venue:string;format:string;sport:'football'|'basketball'|'volleyball';status:'open'|'confirmed'|'completed';score?:string;spots?:number}
 export interface Coach{id:number;name:string;initials:string;title:string;gym:string;district:string;rating:number;reviews:number;price:number;distance:string;verified:boolean;color:string;specialties:string[];languages:string[];bio:string;slots:string[]}
 export interface Booking{id:number;coach:string;service:string;gym:string;date:string;time:string;price:number;status:'confirmed'|'completed'}
+export interface Facility{id:number;name:string;district:string;fields:number;hourlyPrice:number;rating:number;todayRevenue:number;occupancy:number;features:string[]}
+export interface FacilityReservation{id:number;facilityId:number;field:string;customer:string;phone:string;date:string;time:string;duration:number;price:number;status:'pending'|'confirmed'|'completed'}
 @Injectable({providedIn:'root'}) export class GameDataService{
  readonly teams=signal<Team[]>([
   {id:1,name:'Kadıköy United',initials:'KU',sport:'football',rating:4.8,reliability:94,distance:'Takımın',color:'#c7f43d',players:['Burak','Mert','Emir','Can','Arda','Oğuz','Efe'],wins:14,draws:4,losses:5},
@@ -20,6 +22,17 @@ export interface Booking{id:number;coach:string;service:string;gym:string;date:s
   {id:3,name:'Selin Kaya',initials:'SK',title:'Pilates & Mobility Trainer',gym:'Mys Studio Moda',district:'Kadıköy',rating:4.7,reviews:39,price:1100,distance:'2,0 km',verified:true,color:'#ffd6b0',specialties:['Pilates','Postür','Mobilite'],languages:['Türkçe','English'],bio:'Bire bir pilates ve mobilite seanslarıyla ağrısız ve güçlü hareket etmene yardımcı oluyorum.',slots:['10:00','14:00','16:30']}
  ]);
  readonly bookings=signal<Booking[]>([{id:1,coach:'Derya Akın',service:'Bire bir antrenman',gym:'MAC/One Akasya',date:'16 Eylül, Çarşamba',time:'19:30',price:1250,status:'confirmed'}]);
+ readonly facilities=signal<Facility[]>([
+  {id:1,name:'Caddebostan Arena Halı Saha',district:'Kadıköy',fields:3,hourlyPrice:1250,rating:4.8,todayRevenue:8750,occupancy:72,features:['Kapalı saha','Gece ışıklandırma','Soyunma odası']},
+  {id:2,name:'Moda Spor Kompleksi',district:'Kadıköy',fields:2,hourlyPrice:1050,rating:4.6,todayRevenue:4200,occupancy:58,features:['Açık saha','Otopark','Kafe']}
+ ]);
+ readonly facilityReservations=signal<FacilityReservation[]>([
+  {id:1,facilityId:1,field:'Saha 1',customer:'Kadıköy United',phone:'+90 532 000 10 10',date:'Bugün',time:'18:00',duration:1,price:1250,status:'confirmed'},
+  {id:2,facilityId:1,field:'Saha 2',customer:'Moda FC',phone:'+90 533 000 20 20',date:'Bugün',time:'20:00',duration:2,price:2500,status:'pending'},
+  {id:3,facilityId:2,field:'Saha A',customer:'Boğaziçi Ballers',phone:'+90 534 000 30 30',date:'Yarın',time:'19:30',duration:1,price:1050,status:'confirmed'}
+ ]);
  addMatch(match:Match){this.matches.update(items=>[match,...items])}
+ addCoach(coach:Coach){this.coaches.update(items=>[coach,...items])}
  addBooking(booking:Booking){this.bookings.update(items=>[booking,...items])}
+ addFacilityReservation(reservation:FacilityReservation){this.facilityReservations.update(items=>[reservation,...items])}
 }

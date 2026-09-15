@@ -3,6 +3,10 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   { path: 'login', loadComponent: () => import('./features/login/login.page').then(m => m.LoginPage) },
   { path: 'register', loadComponent: () => import('./features/register/register.page').then(m => m.RegisterPage) },
+  { path: 'saha-sahibi-giris', loadComponent: () => import('./features/owner-login/owner-login.page').then(m => m.OwnerLoginPage) },
+  { path: 'saha-sahibi-kayit', loadComponent: () => import('./features/owner-register/owner-register.page').then(m => m.OwnerRegisterPage) },
+  { path: 'saha-sahibi-panel', loadComponent: () => import('./features/owner-dashboard/owner-dashboard.page').then(m => m.OwnerDashboardPage) },
+  { path: 'pt-kayit', loadComponent: () => import('./features/coach-register/coach-register.page').then(m => m.CoachRegisterPage) },
   { path: 'home', loadComponent: () => import('./features/home/home.page').then(m => m.HomePage) },
   { path: 'explore', loadComponent: () => import('./features/explore/explore.page').then(m => m.ExplorePage) },
   { path: 'create', loadComponent: () => import('./features/create/create.page').then(m => m.CreatePage) },

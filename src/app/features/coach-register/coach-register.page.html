@@ -1,0 +1,40 @@
+<section class="coach-auth">
+  <a routerLink="/coaches" class="brand"><span>G</span>GAME<b>ON</b></a>
+
+  <div class="intro">
+    <p class="eyebrow">PT başvurusu</p>
+    <h1>Antrenör profili oluştur</h1>
+    <p>Kaydolduktan sonra profilin antrenör listesinde görünür ve oyuncular senden seans alabilir.</p>
+  </div>
+
+  <form class="auth-card" (ngSubmit)="registerCoach()">
+    <label>Ad soyad<input name="name" [(ngModel)]="name" placeholder="Derya Akın" autocomplete="name" required></label>
+    <label>Uzmanlık başlığı<input name="title" [(ngModel)]="title" placeholder="Strength & Conditioning Coach" required></label>
+
+    <div class="row">
+      <label>Salon<select name="gym" [(ngModel)]="gym"><option>GameOn Online</option><option>MAC/One Akasya</option><option>Athletic House Kadıköy</option><option>Mys Studio Moda</option></select></label>
+      <label>İlçe<select name="district" [(ngModel)]="district"><option>Kadıköy</option><option>Üsküdar</option><option>Beşiktaş</option><option>Şişli</option></select></label>
+    </div>
+
+    <div class="row">
+      <label>Seans ücreti<input type="number" name="price" min="100" step="50" [(ngModel)]="price" required></label>
+      <label>Dil<select name="language" [(ngModel)]="language"><option>Türkçe</option><option>English</option><option>Türkçe / English</option></select></label>
+    </div>
+
+    <div class="row">
+      <label>Uzmanlık 1<input name="specialtyOne" [(ngModel)]="specialtyOne" placeholder="Kuvvet"></label>
+      <label>Uzmanlık 2<input name="specialtyTwo" [(ngModel)]="specialtyTwo" placeholder="Mobilite"></label>
+    </div>
+
+    <label>Biyografi<textarea name="bio" [(ngModel)]="bio" rows="3" placeholder="Deneyimini ve çalışma stilini kısa anlat"></textarea></label>
+    <label>E-posta<input type="email" name="email" [(ngModel)]="email" placeholder="pt@example.com" autocomplete="email" required></label>
+    <label>Şifre<input type="password" name="password" [(ngModel)]="password" placeholder="********" autocomplete="new-password" minlength="8" required></label>
+
+    <button class="primary submit" type="submit">
+      PT olarak kaydol
+      <ion-icon name="arrow-forward" aria-hidden="true" />
+    </button>
+  </form>
+
+  <p class="switch">Oyuncu hesabı açmak için <a routerLink="/register">oyuncu kaydı</a></p>
+</section>
